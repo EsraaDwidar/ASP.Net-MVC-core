@@ -1,0 +1,23 @@
+﻿@model Student
+@{
+    Layout = null;
+    SelectList deptsl = new SelectList(ViewBag.deptlist, "DeptId", "DeptName", Model.DeptNo);
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Edit</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <form method="post" enctype="multipart/form-data">
+            <partial name="createedit" />
+            <input type="file" name="stdimg" />
+            <input type="submit" value="update" class="btn btn-primary" />
+        
+        </form>
+    </body>
+</html>

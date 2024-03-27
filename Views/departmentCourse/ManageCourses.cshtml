@@ -1,0 +1,35 @@
+﻿@model Department
+@{
+    Layout = null;
+    SelectList coursesInDept = new SelectList(Model.Courses, "Id", "Crs_Name");
+    SelectList coursesNotInDept = new SelectList(ViewBag.courseNotInDept, "Id", "Crs_Name");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ManageCourses</title>
+</head>
+<body>
+    <form method="post">
+        <label>CoursesInDept</label>
+        <select multiple asp-items="coursesInDept" name="coursesToRemove">
+            @* @foreach(var item in Model.Courses)
+            {
+                <option value="@item.Id">@item.Crs_Name</option>
+            } *@
+        </select>
+        <label>coursesNotInDept</label>
+        <select multiple asp-items="coursesNotInDept" name="coursesToAdd">
+            @* @foreach (var item in ViewBag.coursesNotInDept)
+            {
+                <option value="@item.Id">@item.Crs_Name</option>
+            } *@
+
+        </select>
+        <input type="submit" value="Change Courses" />
+    </form>
+</body>
+</html>

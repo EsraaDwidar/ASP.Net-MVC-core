@@ -1,0 +1,42 @@
+﻿@model Student
+@{
+    Layout = null;
+    List<Department> deptlst = ViewBag.deptlist;
+    SelectList deptsl = new SelectList(ViewBag.deptlist, "DeptId", "DeptName",200);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Create</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly"></div>
+        <partial name="createedit" />
+        
+         <input type="file" name="stdimg" />
+         <input type="submit" value="add Student" class="btn btn-primary" />
+    </form>
+    
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+     
+    <!----<form action="/student/add" method="post" enctype="multipart/form-data">
+        <input type="text" name="id" /><br />
+        <input type="text" name="name" /><br />
+        <input type="text" name="age" /><br />
+        <input type="file" name="stdimg" />
+        <input type="submit" value="add" />
+    </form>
+    <form method="post">
+        <label>Student id</label><input type="text" name="id" /><br />
+        <label>Student name</label><input type="text" name="name" /><br />
+        <input type="submit" value="add Student" />
+    </form>-->
+</body>
+</html>

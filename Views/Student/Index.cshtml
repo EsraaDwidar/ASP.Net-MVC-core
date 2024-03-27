@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Student>
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Index</title>
+
+</head>
+<body>
+    <a asp-action="create" asp-controller="student" class="btn btn-primary">Create</a>
+    <table class="table table-bordered table-hover" >
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Department</th>
+        <th>Img</th>
+        <th>Operation</th>
+        </thead>
+        <tbody>
+            @if(Model.Count()==0)
+            {
+                <tr class="text-danger">
+                    <td colspan="5">No Students Exist</td>
+                </tr>
+            }
+            else
+            {
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Age</td>
+                        <td>@item.Email</td>
+                        <td>@item.Department.DeptName</td>
+                        <td>
+
+                            @if (item.Img != null && item.Img.Length > 0)
+                            {
+                                var imagBase64 = Convert.ToBase64String(item.Img);
+                                <img src="data:Img;base64,@imagBase64" height="100" width="200" />
+
+                            }
+
+                        </td>
+                        <td>
+                            <a asp-action="details" asp-controller="student" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                            <a asp-action="edit" asp-controller="student" asp-route-id="@item.Id" class="btn btn-info">Edit</a>
+                            <a asp-action="delete" asp-controller="student" onclick="return confirm('are u sure?')" asp-route-id="@item.Id" class="btn btn-info">Delete</a>
+                            <!--- (details2)<button onclick="myfun(@item.Id)">details</button>--->
+                            <button onclick="fun1(@item.Id)">Details</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div id="div1" class="modal-dialog modal-fullscreen-lg-down"></div>
+    <script src="/lib//jquery/dist/jquery.js"></script>
+    <script>
+        function fun1(i) {
+            $("#div1").load("/student/details2/" + i);
+        }
+    </script> 
+
+     @* <div id="div1" class="modal-dialog modal-fullscreen-sm-down"></div>*@
+
+    <!--- (details2)<div id="div1"></div>
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script>
+        function myfun(i){
+            $("#div1").load("/student/details/" + i);
+        }
+    </script> --->
+
+    <!---<a href="student/create" class="btn btn-danger">Create</a>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                </tr>
+            } *@
+        </tbody>
+    </table>--->
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿@model Department
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "dept Edit";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Details</title>
+</head>
+<body>
+    <h1 class="alert alert-info">
+        deptid :: @Model.DeptId <br />
+        dept name :: @Model.DeptName
+    </h1>
+    <a asp-action="index" asp-controller="department" class="btn btn-info">dept list</a>
+</body>
+</html>

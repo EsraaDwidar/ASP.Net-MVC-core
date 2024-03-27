@@ -1,0 +1,24 @@
+﻿@model Department
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "dept Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <form method="post">
+        <!---<label>Department id</label><input type="text" name="deptid" /><br />
+        <label>Department name</label><input type="text" name="deptname" /><br />---> 
+        <label asp-for="DeptId"></label><input asp-for="DeptId" /><br />
+        <label asp-for="DeptName"></label><input asp-for="DeptName" /><br />
+        <input type="submit" value="add department" />
+    </form>
+</body>
+</html>
